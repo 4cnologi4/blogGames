@@ -5,6 +5,8 @@ import { UsuariosRutas } from './http/usuarios/rutas';
 import { JuegoRutas } from './http/juegos/rutas';
 import { ImagenesRutas } from './http/imagenes/rutas';
 import { CategoriasRutas } from './http/categorias/rutas';
+import { FavoritosRutas } from './http/favoritos/rutas';
+import { AuthRutas } from './http/auth/rutas';
 
 export class Main {
   public static app = express();
@@ -30,7 +32,9 @@ export class Main {
     Main.app.use(new UsuariosRutas().ruteador);
     Main.app.use(new JuegoRutas().ruteador);
     Main.app.use(new ImagenesRutas().ruteador);
+    Main.app.use(new FavoritosRutas().ruteador);
     Main.app.use(new CategoriasRutas().ruteador);
+    Main.app.use(new AuthRutas().ruteador);
   }
 
 }
