@@ -14,7 +14,7 @@ export class UsuariosControlador {
 
   public buscar = (req: Request, res: Response, next: NextFunction) => {
     if (req.params.id) {
-      Usuarios.findOne({ where: { id: req.params.id } })
+      Usuarios.findByPk(req.params.id)
         .then((r) => {
           res.status(200)
             .jsonp(r)

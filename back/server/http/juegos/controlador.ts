@@ -14,7 +14,7 @@ export class JuegoControlador {
 
   public buscar = (req: Request, res: Response, next: NextFunction) => {
     if (req.params.id) {
-      Juego.findOne({ where: { id: req.params.id } })
+      Juego.findByPk(req.params.id)
         .then((r) => {
           res.status(200)
             .jsonp(r)

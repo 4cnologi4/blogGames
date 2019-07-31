@@ -3,6 +3,8 @@ import * as bodyParser from 'body-parser';
 
 import { UsuariosRutas } from './http/usuarios/rutas';
 import { JuegoRutas } from './http/juegos/rutas';
+import { ImagenesRutas } from './http/imagenes/rutas';
+import { CategoriasRutas } from './http/categorias/rutas';
 
 export class Main {
   public static app = express();
@@ -27,6 +29,8 @@ export class Main {
   public static configRutas() {
     Main.app.use(new UsuariosRutas().ruteador);
     Main.app.use(new JuegoRutas().ruteador);
+    Main.app.use(new ImagenesRutas().ruteador);
+    Main.app.use(new CategoriasRutas().ruteador);
   }
 
 }
