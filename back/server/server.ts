@@ -5,7 +5,6 @@ const PORT = 3000;
 
 const con: Conex = new Conex();
 
-
 Main.config();
 
 Main.app.listen(PORT, () => {

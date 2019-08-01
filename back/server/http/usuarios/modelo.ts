@@ -1,6 +1,7 @@
-import { Table, Column, Model, BelongsToMany } from 'sequelize-typescript';
+import { Table, Column, Model, BelongsToMany, HasOne } from 'sequelize-typescript';
 import { Favoritos } from '../favoritos/modelo';
 import { Juego } from '../juegos/modelo';
+import Fotos from 'http/fotos/modelo';
 
 @Table
 export default class Usuarios extends Model<Usuarios> {
@@ -11,6 +12,9 @@ export default class Usuarios extends Model<Usuarios> {
   nombre: string;
 
   @Column
+  email: string;
+
+  @Column
   passwd: string;
 
   @Column
@@ -18,6 +22,9 @@ export default class Usuarios extends Model<Usuarios> {
 
   @BelongsToMany(() => Juego as any, () => Favoritos as any)
   juego: Juego[];
+
+  @HasOne(() => Fotos as any)
+  foto: Fotos;
 }
 
 export { Usuarios }

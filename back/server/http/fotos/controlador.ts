@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express-serve-static-core';
 
-import { Categorias } from './modelo';
+import { Fotos } from './modelo';
 
-export class CategoriasControlador {
+export class FotosControlador {
 
   public crear = (req: Request, res: Response, next: NextFunction) => {
-    Categorias.create(req.body)
+    Fotos.create(req.body)
       .then((r) => {
         res.status(200)
           .jsonp(r)
@@ -14,36 +14,30 @@ export class CategoriasControlador {
 
   public buscar = (req: Request, res: Response, next: NextFunction) => {
     if (req.params.id) {
-      Categorias.findByPk(req.params.id)
+      Fotos.findByPk(req.params.id)
         .then((r) => {
           res.status(200)
             .jsonp(r)
-        });
+        })
     } else {
-      Categorias.findAll()
+      Fotos.findAll()
         .then((r) => {
-          include: [{
-            model: Categorias,
-            where: {
-              id: req.params.id
-            }
-          }]
           res.status(200)
             .jsonp(r)
-        });
+        })
     }
   }
 
   public actualizar = (req: Request, res: Response, next: NextFunction) => {
-    Categorias.update(req.body, { where: { id: req.params.id } })
+    Fotos.update(req.body, { where: { id: req.params.id } })
       .then((r) => {
         res.status(200)
           .jsonp(r)
-      });
+      })
   }
 
-  public borrar = (req: Request, res: Response, next: NextFunction) => {
-    Categorias.destroy({ where: { id: req.params.id } })
+  public eliminar = (req: Request, res: Response, next: NextFunction) => {
+    Fotos.destroy({ where: { i: req.params.id } })
       .then((r) => {
         res.status(200)
           .jsonp(r)

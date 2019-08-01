@@ -20,8 +20,8 @@ export default class Conex extends Sequelize {
       .then(() => {
         console.log('tablas creadas...');
       })
-      .error(() => {
-        console.log('valió ...');
+      .catch((error) => {
+        console.log(`valio ... ${error}`);
       })
 
   }
