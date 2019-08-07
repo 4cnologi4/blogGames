@@ -1,7 +1,8 @@
 import { Table, Column, Model, BelongsToMany, HasOne } from 'sequelize-typescript';
 import { Favoritos } from '../favoritos/modelo';
 import { Juego } from '../juegos/modelo';
-import Fotos from 'http/fotos/modelo';
+import Fotos from '../fotos/modelo';
+import Gamer from '../gamer/modelo';
 
 @Table
 export default class Usuarios extends Model<Usuarios> {
@@ -22,6 +23,9 @@ export default class Usuarios extends Model<Usuarios> {
 
   @BelongsToMany(() => Juego as any, () => Favoritos as any)
   juego: Juego[];
+
+  @BelongsToMany(() => Juego as any, () => Gamer as any)
+  juego2: Juego[];
 
   @HasOne(() => Fotos as any)
   foto: Fotos;

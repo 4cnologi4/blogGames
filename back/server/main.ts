@@ -3,13 +3,13 @@ import * as bodyParser from 'body-parser';
 
 import { AuthRutas } from './http/auth/rutas';
 import { CategoriasRutas } from './http/categorias/rutas';
-import { ConsolasRutas } from 'http/consolas/rutas';
+import { ConsolasRutas } from './http/consolas/rutas';
 import { ComentariosRutas } from './http/comentarios/rutas';
 import { FavoritosRutas } from './http/favoritos/rutas';
 import { FotosRutas } from './http/fotos/rutas';
 import { ImagenesRutas } from './http/imagenes/rutas';
 import { JuegoRutas } from './http/juegos/rutas';
-import { PortadaRutas } from 'http/portadas/rutas';
+import { PortadaRutas } from './http/portadas/rutas';
 import { UsuariosRutas } from './http/usuarios/rutas';
 
 export class Main {

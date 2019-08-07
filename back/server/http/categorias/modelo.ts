@@ -16,6 +16,10 @@ export default class Categorias extends Model<Categorias> {
   // se enlazan a través de la tabla etiqueta
   @BelongsToMany(() => Juego as any, 'etiquetas', 'idcategoria', 'idjuego')
   juego: Juego[];
+
+  @HasMany(() => Juego as any)
+  juegos: Juego[];
+
 }
 
 export { Categorias }

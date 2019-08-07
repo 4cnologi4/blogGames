@@ -1,4 +1,4 @@
-import { Table, Column, Model, BelongsToMany, HasOne } from 'sequelize-typescript';
+import { Table, Column, Model, BelongsToMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { Categorias } from '../categorias/modelo';
 import { Imagenes } from '../imagenes/modelo';
 import { Favoritos } from '../favoritos/modelo';
@@ -22,8 +22,13 @@ export default class Juego extends Model<Juego>{
   @BelongsToMany(() => Consolas as any, 'disponible', 'idjuego', 'idconsola')
   consola: Consolas[];
 
-  @HasOne(() => Categorias as any)
-  Categorias: Categorias;
+  @BelongsTo(() => Categorias as any)
+  categoria: Categorias
+  @ForeignKey(() => Categorias as any)
+  idCategorias: number;
+
+  // @HasOne(() => Categorias as any)
+  // Categorias: Categorias;
 
   @HasOne(() => Imagenes as any)
   Imagenes: Imagenes;

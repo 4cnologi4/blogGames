@@ -1,0 +1,34 @@
+  public buscar = (req: Request, res: Response, next: NextFunction) => {
+    if (req.params.id) {
+      Categorias.findByPk(req.params.id)
+        .then((r) => {
+
+          var r2 = r.get({plain: true})
+          console.log(r2)
+          var id = r2.pertenece_a;
+          var obj = {
+            id: r2.id,
+            nombre: r2.nombre
+          }
+          console.log(obj)
+          if(id)
+          Categorias.findByPk(id)
+          .then(papa => {
+            var p = papa.get({plain: true})
+            console.log(p)
+            obj['pertenece_a'] = p.nombre
+            res.status(200)
+            .jsonp(obj)
+          })
+          else
+          res.status(200)
+            .jsonp(r)
+        });
+    } else {
+      Categorias.findAll()
+        .then((r) => {
+          res.status(200)
+            .jsonp(r)
+        });
+    }
+  }
